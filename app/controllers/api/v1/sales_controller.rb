@@ -2,6 +2,10 @@ class Api::V1::SalesController < ApplicationController
   before_action :authorize
   before_action :set_sale, only: [:show, :destroy]
   
+  def show
+    render nothing: true, status: 404 if @sale.nil?
+  end
+  
   def create
     @sales = []
     errors = []
@@ -28,7 +32,7 @@ class Api::V1::SalesController < ApplicationController
   private
   
   def set_sale
-    @sale = Sale.find(params[:id])
+    @sale = Sale.where(id: params[:id]).first
   end
   
   def authorize
