@@ -16,4 +16,12 @@ class Sale < ActiveRecord::Base
   validates :value, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 1000000 }
   
   validates_with SaleValidator
+  
+  def date
+    sale_ts.strftime('%Y%m%d')
+  end
+  
+  def time
+    sale_ts.strftime('%H%M')
+  end
 end
