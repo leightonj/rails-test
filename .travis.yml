@@ -1,3 +1,5 @@
 language: ruby
 rvm:
   - ruby 2.1.1
+before_script:
+  psql -c 'create database rails_test_test;' -U postgres
