@@ -28,4 +28,8 @@ RSpec.describe User, :type => :model do
   it 'is invalid without a password_digest' do
     expect(FactoryGirl.build(:user, password_digest: nil)).not_to be_valid
   end
+  
+  it 'saves password digest when sending password' do
+    expect(FactoryGirl.build(:user_2)).to be_valid
+  end
 end

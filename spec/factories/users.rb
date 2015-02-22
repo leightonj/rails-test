@@ -16,4 +16,9 @@ FactoryGirl.define do
     f.username { Faker::Internet.user_name }
     f.password_digest { Faker::Internet.password(8, 10) }
   end
+  
+  factory :user_2, class: User do
+    username { Faker::Internet.user_name }
+    password { Faker::Internet.password(8, 10) }
+  end
 end
