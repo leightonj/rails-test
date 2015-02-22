@@ -19,14 +19,14 @@ class User < ActiveRecord::Base
   before_validation :set_password_digest
   
   def auth unencrypted_password
-    BCrypt::Password.new(password_digest) == unencrypted_password
+    return false if BCrypt::Password.new(password_digest) != unencrypted_password
     begin
       self.access_key = SecureRandom.hex
     end while self.class.exists?(access_key: access_key)
     
     self.access_key_expires_at = Time.now + 3.days
-    save
-    self.access_key
+    self.save
+    self
   end
   
 private

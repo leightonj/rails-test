@@ -13,10 +13,10 @@ RSpec.describe 'Users', type: :request do
         expect(response.status).to be(401)
         
         user = FactoryGirl.create(:user_2)
-        
+       
         post api_v1_auth_path(username: user.username)
         expect(response.status).to be(401)
-        
+       
         post api_v1_auth_path(password: user.password)
         expect(response.status).to be(401)
         
