@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
   
   def auth
     render nothing: true, status: 401 and return if params[:username].nil? || params[:password].nil?
-    user = User.find_by({ username: params[:username] })
-    render nothing: true, status: 401 and return if !user or !user.auth(params[:password])
+    @user = User.find_by({ username: params[:username] })
+    render nothing: true, status: 401 and return if !@user or !@user.auth(params[:password])
   end
 end

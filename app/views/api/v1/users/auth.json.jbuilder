@@ -1,0 +1,1 @@
+json.extract! @user, :access_key, :access_key_expires_at
