@@ -38,12 +38,12 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-end
-
-group :test do
   gem 'rspec-rails', '~> 3.0.2'
-  gem 'coveralls', require: false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
